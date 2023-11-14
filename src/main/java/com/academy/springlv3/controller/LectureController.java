@@ -2,14 +2,15 @@ package com.academy.springlv3.controller;
 
 import com.academy.springlv3.dto.lecture.LectureRequestDto;
 import com.academy.springlv3.dto.lecture.LectureResponseDto;
+import com.academy.springlv3.entity.UserRoleEnum;
 import com.academy.springlv3.service.LectureService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @RestController
 @RequestMapping("/lecture")
