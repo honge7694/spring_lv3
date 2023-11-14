@@ -41,5 +41,10 @@ public class LectureController {
         return new ResponseEntity<>(lectureService.searchByCategory(category), HttpStatus.OK);
     }
 
+    @DeleteMapping("/drop")
+    public ResponseEntity dropLecture(@RequestParam("lecture_id") Long lectureId){
+        return lectureService.deleteLecture(lectureId);
+    }
+
 
 }
