@@ -6,8 +6,9 @@ import com.academy.springlv3.service.LectureService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -28,6 +29,16 @@ public class LectureController {
     @GetMapping("/{lecture_id}")
     public ResponseEntity<LectureResponseDto> lectureListOfTeacher(@PathVariable Long lecture_id){
         return new ResponseEntity<>(lectureService.findLecture(lecture_id), HttpStatus.OK);
+    }
+
+    @PutMapping("/{lecture_id}")
+    public ResponseEntity<LectureResponseDto> lectureUpdate(@PathVariable Long lecture_id, @RequestBody LectureRequestDto requestDto){
+        return new ResponseEntity<>(lectureService.updateLecture(lecture_id, requestDto), HttpStatus.OK);
+    }
+
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<LectureResponseDto>> searchByCategory(@PathVariable String category){
+        return new ResponseEntity<>(lectureService.searchByCategory(category), HttpStatus.OK);
     }
 
 

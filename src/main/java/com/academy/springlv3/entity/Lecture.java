@@ -36,4 +36,12 @@ public class Lecture extends BaseTimeEntity {
         this.category = requestDto.getCategory();
     }
 
+    public Lecture update(LectureRequestDto requestDto){
+        this.name = requestDto.getName();
+        this.price = requestDto.getPrice();
+        this.introduce = requestDto.getIntroduce();
+        this.category = requestDto.getCategory();
+        return this;
+    }
+
 }
