@@ -4,6 +4,8 @@ import com.academy.springlv3.entity.Lecture;
 import lombok.Data;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
 public class LectureResponseDto {
     private Long lectureId;
@@ -11,6 +13,7 @@ public class LectureResponseDto {
     private int price;
     private String introduce;
     private String category;
+    private LocalDateTime createdAt;
 
     public LectureResponseDto(Lecture lecture){
         this.lectureId = lecture.getLectureId();
@@ -18,5 +21,6 @@ public class LectureResponseDto {
         this.price = lecture.getPrice();
         this.introduce = lecture.getIntroduce();
         this.category = lecture.getCategory();
+        this.createdAt = lecture.getCreatedAt();
     }
 }
