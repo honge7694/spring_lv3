@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
 @Entity
 @Getter
@@ -28,5 +29,23 @@ public class Teacher {
         this.company = requestDto.getCompany();
         this.phoneNumber = requestDto.getPhoneNumber();
         this.introduce = requestDto.getIntroduce();
+    }
+
+    public void update(TeacherRequestDto requestDto) {
+        if (!StringUtils.equals(requestDto.getName(), "")) {
+            this.name = requestDto.getName();
+        }
+
+        this.career = requestDto.getCareer();
+
+        if (!StringUtils.equals(requestDto.getCompany(), "")) {
+            this.company = requestDto.getCompany();
+        }
+        if (!StringUtils.equals(requestDto.getPhoneNumber(), "")) {
+            this.phoneNumber = requestDto.getPhoneNumber();
+        }
+        if (!StringUtils.equals(requestDto.getIntroduce(), "")) {
+            this.introduce = requestDto.getIntroduce();
+        }
     }
 }
