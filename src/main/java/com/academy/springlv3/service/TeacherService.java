@@ -1,9 +1,12 @@
 package com.academy.springlv3.service;
 
+import com.academy.springlv3.dto.lecture.LectureResponseDto;
 import com.academy.springlv3.dto.teacher.TeacherRequestDto;
 import com.academy.springlv3.dto.teacher.TeacherResponseDto;
+import com.academy.springlv3.entity.Lecture;
 import com.academy.springlv3.entity.Teacher;
 import com.academy.springlv3.exception.TeacherNotFoundException;
+import com.academy.springlv3.repository.LectureRepository;
 import com.academy.springlv3.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,7 @@ import java.util.Optional;
 public class TeacherService {
 
     private final TeacherRepository teacherRepository;
+    private final LectureRepository lectureRepository;
 
     public TeacherResponseDto createTeacher(TeacherRequestDto requestDto) {
         // RequestDto -> Entity
@@ -37,6 +41,11 @@ public class TeacherService {
 
         teacher.update(requestDto);
         return new TeacherResponseDto(teacher);
+    }
+
+    public List<LectureResponseDto> getTecherLectures(Long id) {
+        List<Lecture> lectures = lectureRepository.findLecturesByTeacherId(id);
+        return lectures.stream().map(LectureResponseDto::new).toList();
     }
 
     private Teacher findTeacher(Long id) {

@@ -1,4 +1,4 @@
-package com.academy.springlv3.dto.user.lecture;
+package com.academy.springlv3.dto.lecture;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -21,5 +21,7 @@ public class LectureRequestDto {
 
     @NotBlank(message = "카테고리를 입력하세요.")
     private String category;
+
+    private Long teacherId;
 
 }

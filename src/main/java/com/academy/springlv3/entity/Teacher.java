@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "teachers")
+@Table(name = "teacher")
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

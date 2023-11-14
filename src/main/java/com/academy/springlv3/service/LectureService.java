@@ -1,13 +1,12 @@
 package com.academy.springlv3.service;
 
-import com.academy.springlv3.dto.user.lecture.LectureResponseDto;
+import com.academy.springlv3.dto.lecture.LectureResponseDto;
 import com.academy.springlv3.entity.Lecture;
-import com.academy.springlv3.dto.user.lecture.LectureRequestDto;
+import com.academy.springlv3.dto.lecture.LectureRequestDto;
 import com.academy.springlv3.repository.LectureRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

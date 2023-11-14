@@ -8,14 +8,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -37,5 +35,6 @@ public class UserController {
             // JSON 형태로 에러 메시지를 가공하여 반환
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
         }
+        return userService.signup(requestDto);
     }
 }

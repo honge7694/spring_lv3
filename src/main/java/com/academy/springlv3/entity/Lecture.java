@@ -1,6 +1,6 @@
 package com.academy.springlv3.entity;
 
-import com.academy.springlv3.dto.user.lecture.LectureRequestDto;
+import com.academy.springlv3.dto.lecture.LectureRequestDto;
 import com.academy.springlv3.time.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,7 +15,10 @@ import lombok.Setter;
 public class Lecture extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long lectureId;
+    private Long id;
+
+    @Column(name = "teacher_id", nullable = false)
+    private Long teacherId;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -34,6 +37,7 @@ public class Lecture extends BaseTimeEntity {
         this.price = requestDto.getPrice();
         this.introduce = requestDto.getIntroduce();
         this.category = requestDto.getCategory();
+        this.teacherId = requestDto.getTeacherId();
     }
 
     public Lecture update(LectureRequestDto requestDto){
@@ -41,6 +45,7 @@ public class Lecture extends BaseTimeEntity {
         this.price = requestDto.getPrice();
         this.introduce = requestDto.getIntroduce();
         this.category = requestDto.getCategory();
+        this.teacherId = requestDto.getTeacherId();
         return this;
     }
 

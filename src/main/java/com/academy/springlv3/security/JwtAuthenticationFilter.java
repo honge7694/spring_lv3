@@ -3,7 +3,6 @@ package com.academy.springlv3.security;
 import com.academy.springlv3.dto.user.LoginRequestDto;
 import com.academy.springlv3.entity.UserRoleEnum;
 import com.academy.springlv3.jwt.JwtUtil;
-import com.academy.springlv3.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,7 +1,7 @@
 package com.academy.springlv3.controller;
 
-import com.academy.springlv3.dto.user.lecture.LectureRequestDto;
-import com.academy.springlv3.dto.user.lecture.LectureResponseDto;
+import com.academy.springlv3.dto.lecture.LectureRequestDto;
+import com.academy.springlv3.dto.lecture.LectureResponseDto;
 import com.academy.springlv3.service.LectureService;
 
 import org.springframework.http.HttpStatus;

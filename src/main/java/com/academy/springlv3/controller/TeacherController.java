@@ -1,5 +1,6 @@
 package com.academy.springlv3.controller;
 
+import com.academy.springlv3.dto.lecture.LectureResponseDto;
 import com.academy.springlv3.dto.teacher.TeacherRequestDto;
 import com.academy.springlv3.dto.teacher.TeacherResponseDto;
 import com.academy.springlv3.entity.UserRoleEnum;
@@ -36,6 +37,11 @@ public class TeacherController {
     @PutMapping("/{id}")
     public TeacherResponseDto editTeacher(@PathVariable Long id, @RequestBody TeacherRequestDto requestDto) {
         return teacherService.editTeacher(id, requestDto);
+    }
+
+    @GetMapping("/{id}/lectures")
+    public List<LectureResponseDto> getTeacherLectures(@PathVariable Long id) {
+        return teacherService.getTecherLectures(id);
     }
 
 }
