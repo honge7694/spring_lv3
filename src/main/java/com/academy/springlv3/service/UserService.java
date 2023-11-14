@@ -21,10 +21,10 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public ResponseEntity signup(SignupRequestDto requestDto) {
-        String password = passwordEncoder.encode(requestDto.getPassword()); // TODO: PASSWORD 알파벳 대소문자 숫자 특수문자 구성
+        String password = passwordEncoder.encode(requestDto.getPassword());
 
         // Email Validation
-        String email = requestDto.getEmail(); // TODO: 이메일 형식
+        String email = requestDto.getEmail();
 
         // 부서 별 권한 설정
         String part = requestDto.getPart();
