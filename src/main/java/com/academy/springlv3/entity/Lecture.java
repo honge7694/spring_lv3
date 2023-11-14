@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Lecture extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long lectureId;
 
     @Column(name = "teacher_id", nullable = false)
     private Long teacherId;
