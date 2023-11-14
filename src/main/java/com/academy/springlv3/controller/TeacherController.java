@@ -41,7 +41,7 @@ public class TeacherController {
 
     @GetMapping("/{id}/lectures")
     public List<LectureResponseDto> getTeacherLectures(@PathVariable Long id) {
-        return teacherService.getTecherLectures(id);
+        return teacherService.getTeacherLectures(id);
     }
 
 }

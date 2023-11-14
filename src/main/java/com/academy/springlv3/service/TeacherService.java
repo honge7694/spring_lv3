@@ -43,7 +43,7 @@ public class TeacherService {
         return new TeacherResponseDto(teacher);
     }
 
-    public List<LectureResponseDto> getTecherLectures(Long id) {
+    public List<LectureResponseDto> getTeacherLectures(Long id) {
         List<Lecture> lectures = lectureRepository.findLecturesByTeacherId(id);
         return lectures.stream().map(LectureResponseDto::new).toList();
     }
