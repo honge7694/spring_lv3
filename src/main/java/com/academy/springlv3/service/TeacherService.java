@@ -7,6 +7,7 @@ import com.academy.springlv3.exception.TeacherNotFoundException;
 import com.academy.springlv3.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,8 +27,20 @@ public class TeacherService {
     }
 
     public TeacherResponseDto getTeacher(Long id) {
-        return new TeacherResponseDto(teacherRepository.findById(id)
-                .orElseThrow(() -> new TeacherNotFoundException("존재하지 않는 강사입니다."))
-        );
+        return new TeacherResponseDto(findTeacher(id));
+    }
+
+    @Transactional
+    public TeacherResponseDto editTeacher(Long id, TeacherRequestDto requestDto) {
+        // 강사 존재 확인
+        Teacher teacher = findTeacher(id);
+
+        teacher.update(requestDto);
+        return new TeacherResponseDto(teacher);
+    }
+
+    private Teacher findTeacher(Long id) {
+        return teacherRepository.findById(id)
+                .orElseThrow(() -> new TeacherNotFoundException("존재하지 않는 강사입니다."));
     }
 }
