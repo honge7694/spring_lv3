@@ -37,7 +37,5 @@ public class UserController {
             // JSON 형태로 에러 메시지를 가공하여 반환
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
         }
-
-        return userService.signup(requestDto);
     }
 }
