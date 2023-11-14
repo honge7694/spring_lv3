@@ -22,6 +22,7 @@ repositories {
 }
 
 dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.2'
     // StringUtils
     implementation 'org.apache.commons:commons-lang3:3.12.0'
 
