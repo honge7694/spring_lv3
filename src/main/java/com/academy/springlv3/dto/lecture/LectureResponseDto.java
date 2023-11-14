@@ -17,7 +17,7 @@ public class LectureResponseDto {
     private LocalDateTime createdAt;
 
     public LectureResponseDto(Lecture lecture){
-        this.lectureId = lecture.getLectureId();
+        this.lectureId = lecture.getId();
         this.teacherId = lecture.getTeacherId();
         this.name = lecture.getName();
         this.price = lecture.getPrice();

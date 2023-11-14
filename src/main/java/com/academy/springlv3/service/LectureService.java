@@ -7,6 +7,8 @@ import com.academy.springlv3.repository.LectureRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,11 +25,11 @@ public class LectureService {
 
 
     public LectureResponseDto findLecture(Long lectureId) {
-        return new LectureResponseDto(lectureRepository.findLectureByLectureIdOrderByCreatedAt(lectureId));
+        return new LectureResponseDto(lectureRepository.findLectureByIdOrderByCreatedAt(lectureId));
     }
 
     public LectureResponseDto updateLecture(Long lectureId, LectureRequestDto requestDto) {
-        Lecture lecture = lectureRepository.findLectureByLectureIdOrderByCreatedAt(lectureId);
+        Lecture lecture = lectureRepository.findLectureByIdOrderByCreatedAt(lectureId);
         if(lecture == null){
             throw new EntityNotFoundException("해당 강의를 찾지 못했습니다.");
         }
@@ -41,5 +43,10 @@ public class LectureService {
             throw new EntityNotFoundException("해당 카테고리로 조회가 되지 않습니다.");
         }
         return lectures.stream().map(LectureResponseDto::new).toList();
+    }
+
+    public ResponseEntity deleteLecture(Long lectureId) {
+        lectureRepository.deleteById(lectureId);
+        return ResponseEntity.status(HttpStatus.OK).body(lectureId + "번 강의가 삭제되었습니다.");
     }
 }
