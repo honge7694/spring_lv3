@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
-    Lecture findLectureByLectureIdOrderByCreatedAt(Long lectureId);
+    Lecture findLectureByIdOrderByCreatedAt(Long lectureId);
     List<Lecture> findLecturesByCategoryOrderByCreatedAt(String category);
     List<Lecture> findLecturesByTeacherId(Long teacherId);
 }

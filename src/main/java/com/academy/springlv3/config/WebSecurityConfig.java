@@ -1,6 +1,7 @@
 package com.academy.springlv3.config;
 
 
+import com.academy.springlv3.entity.UserRoleEnum;
 import com.academy.springlv3.jwt.JwtUtil;
 import com.academy.springlv3.security.JwtAuthenticationFilter;
 import com.academy.springlv3.security.JwtAuthorizationFilter;
@@ -64,7 +65,8 @@ public class WebSecurityConfig {
                 authorizeHttpRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용 설정
                         .requestMatchers("/").permitAll() // 메인 페이지 요청 허가
-                        .requestMatchers("/lecture/**").permitAll() // '/api/user/'로 시작하는 요청 모두 접근 허가
+                        .requestMatchers("/lecture/**").hasAuthority(UserRoleEnum.Authority.MANAGER)
+                        .requestMatchers("/api/**").permitAll()// '/api/user/'로 시작하는 요청 모두 접근 허가
                         .anyRequest().authenticated() // 그 외 모든 요청 인증처리
         );
 
