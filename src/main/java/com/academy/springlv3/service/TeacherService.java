@@ -9,11 +9,12 @@ import com.academy.springlv3.exception.TeacherNotFoundException;
 import com.academy.springlv3.repository.LectureRepository;
 import com.academy.springlv3.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -46,6 +47,16 @@ public class TeacherService {
     public List<LectureResponseDto> getTeacherLectures(Long id) {
         List<Lecture> lectures = lectureRepository.findLecturesByTeacherId(id);
         return lectures.stream().map(LectureResponseDto::new).toList();
+    }
+
+    public ResponseEntity deleteTeacher(Long id) {
+        // 강사 존재 확인
+        Teacher teacher = findTeacher(id);
+
+        // teacher 삭제
+        teacherRepository.delete(teacher);
+
+        return ResponseEntity.status(HttpStatus.OK).body("삭제가 완료되었습니다.");
     }
 
     private Teacher findTeacher(Long id) {
