@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,13 +29,14 @@ public class LectureService {
         return new LectureResponseDto(lectureRepository.findLectureByIdOrderByCreatedAt(lectureId));
     }
 
+    @Transactional
     public LectureResponseDto updateLecture(Long lectureId, LectureRequestDto requestDto) {
         Lecture lecture = lectureRepository.findLectureByIdOrderByCreatedAt(lectureId);
         if(lecture == null){
             throw new EntityNotFoundException("해당 강의를 찾지 못했습니다.");
         }
         lecture.update(requestDto);
-        return new LectureResponseDto(lectureRepository.save(lecture));
+        return new LectureResponseDto(lecture);
     }
 
     public List<LectureResponseDto> searchByCategory(String category){
